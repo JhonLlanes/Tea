@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+<title>Proyecto TEA</title>
+</h:head>
+<body>
+	<h2>Proyecto TEA</h2>
+	<h:form>
+		<h:panelGrid columns="2">
+Categoria A:
+<h:inputText value="#{personaControler.pa.categoriaA}" />
+Categoria B:
+<h:inputText value="#{personaControler.pa.categoriaB}" />
+Categoria C:
+<h:inputText value="#{personaControler.pa.categoriaC}" />
+
+Porcentaje A: 
+<h:inputText value="#{personaControler.pa.porcentajeA}" />
+Porcentaje B: 
+<h:inputText value="#{personaControler.pa.porcentajeB}" />
+Porcentaje C: 
+<h:inputText value="#{personaControler.pa.porcentajeC}" />
+
+Codigo:
+<h:inputText value="#{personaControler.pa.codigo}" />
+		</h:panelGrid>
+		<br />
+		<h:commandButton value="Guardar"
+			action="#{personaControler.Guardar()}" />
+
+		<br />
+
+		<h:dataTable id="tabla1" value="#{personaControler.persona}"
+			var="persona" border="2" cellspacing="1" cellpadding="1">
+			<h:column>
+				<f:facet name="header"> <h3> Codigo</h3>  </f:facet>    				
+      #{persona.codigo}
+   </h:column>
+			<h:column>
+				<f:facet name="header">Categoria A</f:facet>    				
+      #{persona.categoriaA}
+   </h:column>
+			<h:column>
+				<f:facet name="header">Categoria B</f:facet>    				
+      #{persona.categoriaB}
+   </h:column>
+			<h:column>
+				<f:facet name="header">Categoria C</f:facet>    				
+      #{persona.categoriaC}
+   </h:column>
+			<h:column>
+				<f:facet name="header">PA</f:facet>    				
+      #{persona.porcentajeA}
+   </h:column>
+			<h:column>
+				<f:facet name="header">PB</f:facet>    				
+      #{persona.porcentajeB}
+   </h:column>
+			<h:column>
+				<f:facet name="header">PB</f:facet>    				
+      #{persona.porcentajeC}
+   </h:column>
+		</h:dataTable>
+		<br />
+		<h:commandButton value="Listar">
+			<f:ajax listener="#{personaControler.listar()}" render="tabla1"
+				update="tabla1"></f:ajax>
+		</h:commandButton>
+
+	</h:form>
+</body>
+</html>
